@@ -3,7 +3,6 @@
 This is a GUI application that **automatically transcribes speech** and **performs speaker diarization** from an audio file, then **exports the results to an Excel (.xlsx) file**.  
 It utilizes OpenAI’s Whisper model for speech recognition, `pyannote.audio` for speaker diarization, and Python’s built-in `tkinter` for the graphical interface.
 
----
 
 ## ✨ Features
 
@@ -12,7 +11,6 @@ It utilizes OpenAI’s Whisper model for speech recognition, `pyannote.audio` fo
 - Export analysis results as an Excel (.xlsx) file
 - Simple GUI for easy operation by anyone
 
----
 
 ## 🔧 Setup
 
