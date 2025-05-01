@@ -13,7 +13,7 @@ from pyannote.audio import Pipeline
 class AudioApp():
    def __init__(self):
       self.root = tkinter.Tk()
-      self.root.title('自動文字起こしapp')
+      self.root.title('auto-transcription')
       self.root.geometry('500x350')
       self.root.resizable(False, False)
       self.font = ('Helvetica', 15)
@@ -28,29 +28,29 @@ class AudioApp():
       self.do_separate_var = tkinter.BooleanVar()
       self.validate_cmd = self.root.register(self.validate)
 
-      self.apikey_label = ttk.Label(self.root, text='APIキー', font=self.font)
+      self.apikey_label = ttk.Label(self.root, text='API key ', font=self.font)
       self.apikey_entry = ttk.Entry(self.root, width=39, font=self.font)
       self.apikey_entry.insert(0, self.openai_api_key)
 
-      self.do_separate_label = ttk.Label(self.root, text='話者分離', font=self.font)
+      self.do_separate_label = ttk.Label(self.root, text='separate', font=self.font)
       self.do_separate_ckbtn = ttk.Checkbutton(text='', variable=self.do_separate_var, command=self.ckbtn_func)
 
-      self.num_speakers_label = ttk.Label(self.root, text='人数', font=self.font, state='disable')
+      self.num_speakers_label = ttk.Label(self.root, text='#spk', font=self.font, state='disable')
       self.num_speakers_spinbox = ttk.Spinbox(self.root, from_=1, to=100, width=10, font=self.font, state='disable', validate="key", validatecommand=(self.validate_cmd, "%P"))
 
-      self.prompt_label = ttk.Label(self.root, text='プロンプト', font=self.font)
+      self.prompt_label = ttk.Label(self.root, text='prompt', font=self.font)
       self.prompt_st = tkinter.scrolledtext.ScrolledText(self.root, width=39, height=10, font=self.font)
 
-      self.file_label = ttk.Label(self.root, text='音声ファイル', font=self.font)
+      self.file_label = ttk.Label(self.root, text='', font=self.font)
       self.file_frame = ttk.Frame(self.root)
-      self.file_btn = tkinter.Button(self.file_frame, text='開く', width=2, command=self.get_filename)
-      self.file_txt = ttk.Label(self.file_frame, text='')
+      self.file_btn = tkinter.Button(self.file_frame, text='open', width=2, command=self.get_filename)
+      self.file_txt = ttk.Label(self.file_frame, text='sound file')
       self.file_btn.grid(row=0, column=0)
       self.file_txt.grid(row=0, column=1, padx=5)
 
-      self.start_btn = tkinter.Button(self.root, text='開始', width=5, height=2, command=self.start_btn_func)
+      self.start_btn = tkinter.Button(self.root, text='start', width=5, height=2, command=self.start_btn_func)
       self.progress_bar = ttk.Progressbar(self.root, mode='indeterminate')
-      self.end_txt = ttk.Label(self.root, text='完了！', font=self.font)
+      self.end_txt = ttk.Label(self.root, text='complete!', font=self.font)
 
 
       self.apikey_label.grid(row=0, column=0, padx=10, sticky=tkinter.W)
